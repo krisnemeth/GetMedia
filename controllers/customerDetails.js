@@ -7,4 +7,9 @@ let sum = window.localStorage.getItem('sum')
 document.getElementById('name').innerHTML = `${firstName} ${lastName}`
 document.getElementById('email').innerHTML = `${email}`
 document.getElementById('address').innerHTML = `${address}`
-document.getElementById("totalPrice").innerHTML = `${sum}`;
+
+if (localStorage.getItem('sum')) {
+    document.getElementById("totalPrice").innerHTML = `£${sum}`;
+} else {
+    document.getElementById("totalPrice").innerHTML = `£0`;
+}

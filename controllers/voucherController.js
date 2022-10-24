@@ -64,32 +64,25 @@ function getTotal() {
 
 // button event handlers
 
-// document.getElementById("btn1").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect01").value);
-//   addItem(1);
-//   updateQuantity(1, quantity);
-//   getTotal()
-// });
-
-// document.getElementById("btn2").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect02").value);
-//   addItem(2);
-//   updateQuantity(2, quantity);
-//   getTotal()
-// });
-
-// document.getElementById("btn3").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect03").value);
-//   addItem(3);
-//   updateQuantity(3, quantity);
-//   getTotal()
-// });
-
-document.getElementById('clear').addEventListener('click', function(){
-  localStorage.removeItem('sum', sum);
-  
-  localStorage.setItem('cart', []) = [];
-  
-
-  console.log('button clicked')
+document.getElementById("btn1").addEventListener("click", function () {
+  let quantity = parseInt(document.getElementById("inputGroupSelect01").value);
+  addItem(1);
+  updateQuantity(1, quantity);
+  getTotal()
 });
+
+document.getElementById("btn2").addEventListener("click", function () {
+  let quantity = parseInt(document.getElementById("inputGroupSelect02").value);
+  addItem(2);
+  updateQuantity(2, quantity);
+  getTotal()
+});
+
+document.getElementById("btn3").addEventListener("click", function () {
+  let quantity = parseInt(document.getElementById("inputGroupSelect03").value);
+  addItem(3);
+  updateQuantity(3, quantity);
+  getTotal()
+});
+
+document.getElementById('')
