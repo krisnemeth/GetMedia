@@ -1,0 +1,33 @@
+.sidebar {
+  position: fixed;
+  width: 11.5rem;
+  height: 100vh;
+  background-color: #3d3d3c;
+  font-family: "San Francisco";
+}
+
+.logo {
+  width: 33px;
+  height: 33px;
+}
+
+.nav a {
+  color: #6C757D;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #FFC108;
+}
+
+p {
+  color: #6C757D;
+}
+p:hover {
+  color: #6C757D;
+  cursor: pointer;
+}
+
+.sidebar-footer {
+  margin-top: 16rem;
+}
