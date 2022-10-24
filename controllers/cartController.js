@@ -88,7 +88,7 @@ function getTotal() {
 document.getElementById('clear').addEventListener('click', function(){
   localStorage.removeItem('sum', sum);
   
-  localStorage.setItem('cart', []) = [];
+  localStorage.setItem('cart', []);
   
 
   console.log('button clicked')
