@@ -14,15 +14,18 @@
 .nav a {
   color: #6C757D;
   text-decoration: none;
+  
 }
 
 .nav a:hover {
   color: #FFC108;
+  border-bottom: 2px solid#FFC108;
 }
 
 p {
   color: #6C757D;
 }
+
 p:hover {
   color: #6C757D;
   cursor: pointer;

@@ -1,4 +1,7 @@
-// Fetching the json file, catching the response, the storing it in localstorage after having checked if there's anything in there
+//using duplicate code to prevent errors that occured when button events' buttons were located on different pages.
+//I know it's not best practice, wanted to avoid any errors in the console.
+//For detailed description of code, please see cartController.
+
 fetch("./products.json")
   .then(function (response) {
     return response.json();
@@ -10,22 +13,16 @@ fetch("./products.json")
     }
   });
 
-//   Setting global variables
-
 let products = JSON.parse(localStorage.getItem("products"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
-
 function addItem(productId) {
-  // using find method on the products array, and if the product Id matches our argument it will be stored in the variable
   let product = products.find(function (product) {
     return product.id == productId;
   });
-
   if (cart.length == 0) {
     cart.push(product);
   } else {
-    // searching for the product in the cart array. if it exists, find will return product and store it in res variable. if it doesnt exist it will return undefined
     let res = cart.find((element) => element.id == productId);
 
     if (res === undefined) {
@@ -39,7 +36,6 @@ function removeItem(productId) {
   let temp = cart.filter((item) => item.id != productId);
   localStorage.setItem("cart", JSON.stringify(temp));
 }
-// removeItem(3)
 
 function updateQuantity(productId, quantity) {
   for (let product of cart) {
@@ -47,6 +43,7 @@ function updateQuantity(productId, quantity) {
       product.quantity = quantity;
     }
   }
+
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
@@ -58,31 +55,33 @@ function getTotal() {
   let sum = temp.reduce(function (prev, next) {
     return prev + next;
   }, 0);
-  
-  localStorage.setItem('sum', sum)
+
+  localStorage.setItem("sum", sum);
 }
 
 // button event handlers
 
 document.getElementById("btn1").addEventListener("click", function () {
+  //getting the value from the select
   let quantity = parseInt(document.getElementById("inputGroupSelect01").value);
+  //calling additem function with the relevant productID
   addItem(1);
+  //updating the quantity based on the input value
   updateQuantity(1, quantity);
-  getTotal()
+  //calculating, and storing the current value in localStorage
+  getTotal();
 });
 
 document.getElementById("btn2").addEventListener("click", function () {
   let quantity = parseInt(document.getElementById("inputGroupSelect02").value);
   addItem(2);
   updateQuantity(2, quantity);
-  getTotal()
+  getTotal();
 });
 
 document.getElementById("btn3").addEventListener("click", function () {
   let quantity = parseInt(document.getElementById("inputGroupSelect03").value);
   addItem(3);
   updateQuantity(3, quantity);
-  getTotal()
+  getTotal();
 });
-
-document.getElementById('')

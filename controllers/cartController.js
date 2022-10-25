@@ -1,95 +1,83 @@
-// Fetching the json file, catching the response, the storing it in localstorage after having checked if there's anything in there
+// Fetching the json file, resolving the promise (response object) catching it with the response variable which is the argument.
 fetch("./products.json")
   .then(function (response) {
     return response.json();
   })
+  //the json method also returns a promise, so using another then method to catch the array of products with the data variable, which is the argument.
   .then(function (data) {
+    //saving data to localStorage
     localStorage.setItem("products", JSON.stringify(data));
+    //checking if there's a cart already existing in storage, if not, then creating an empty array for it
     if (!localStorage.getItem("cart")) {
       localStorage.setItem("cart", "[]");
     }
   });
 
 //   Setting global variables
-
 let products = JSON.parse(localStorage.getItem("products"));
 let cart = JSON.parse(localStorage.getItem("cart"));
 
-
+//function to add items to cart
 function addItem(productId) {
-  // using find method on the products array, and if the product Id matches our argument it will be stored in the variable
+  // using find method on the products array, and if the product ID matches our argument it will be stored in the product variable
   let product = products.find(function (product) {
     return product.id == productId;
   });
-
+  //checking if the cart is empty, if so, add the product
   if (cart.length == 0) {
     cart.push(product);
   } else {
     // searching for the product in the cart array. if it exists, find will return product and store it in res variable. if it doesnt exist it will return undefined
     let res = cart.find((element) => element.id == productId);
-
+    //if the product doesnt exist (undefined) then we push the product to the cart
     if (res === undefined) {
       cart.push(product);
     }
   }
+  //putting the cart back to localStorage to overwrite the old values with the new ones
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+//function to remove items from the cart
 function removeItem(productId) {
+  //creating a new array (temp) to hold all products except the one we want to remove using filter method
   let temp = cart.filter((item) => item.id != productId);
+  //putting the cart back to storage overwriting the old values
   localStorage.setItem("cart", JSON.stringify(temp));
 }
-// removeItem(3)
 
+//function to update the quantity of items in the cart
 function updateQuantity(productId, quantity) {
+  //looping through cart array, finding the product with the matching ID, then targeting the quantity setting the new value
   for (let product of cart) {
     if (product.id == productId) {
+      //if true, update quantity
       product.quantity = quantity;
     }
   }
+  //putting the cart back to storage overwriting the old values
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+//function to calculate the total price of items in the cart
 function getTotal() {
+  //creating a new array using map method to hold every product's price value, then summarize the price amount
   let temp = cart.map(function (item) {
     return parseInt(item.price * item.quantity);
   });
-
+  //using reduce to add the prev value with the next. this goes until the length of the array, until we're left with sum.
   let sum = temp.reduce(function (prev, next) {
     return prev + next;
   }, 0);
-  
-  localStorage.setItem('sum', sum)
+  //saving the sum in local storage
+  localStorage.setItem("sum", sum);
 }
 
-// button event handlers
-
-// document.getElementById("btn1").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect01").value);
-//   addItem(1);
-//   updateQuantity(1, quantity);
-//   getTotal()
-// });
-
-// document.getElementById("btn2").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect02").value);
-//   addItem(2);
-//   updateQuantity(2, quantity);
-//   getTotal()
-// });
-
-// document.getElementById("btn3").addEventListener("click", function () {
-//   let quantity = parseInt(document.getElementById("inputGroupSelect03").value);
-//   addItem(3);
-//   updateQuantity(3, quantity);
-//   getTotal()
-// });
-
-document.getElementById('clear').addEventListener('click', function(){
-  localStorage.removeItem('sum', sum);
-  
-  localStorage.setItem('cart', []);
-  
-
-  console.log('button clicked')
+//button event to clear the cart
+document.getElementById("clear").addEventListener("click", function () {
+  //removing items from the localStorage
+  localStorage.removeItem("sum", sum);
+  localStorage.removeItem("cart", "[]");
+  //reloading the window so the cart is usable again if the user wishes
+  window.location.reload();
 });
