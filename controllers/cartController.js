@@ -73,11 +73,41 @@ function getTotal() {
   localStorage.setItem("sum", sum);
 }
 
+//function to calculate the overall amount of vouchers in the cart
+function getQuantity() {
+  //creating a new array using map method to hold every product's quantity
+  let temp = cart.map(function (item) {
+    return parseInt(item.quantity);
+  });
+  //using reduce to add the prev value with the next. this goes until the length of the array, until we're left with quantity total.
+  let quantity = temp.reduce(function (prev, next) {
+    return prev + next;
+  }, 0);
+  //saving quantity to localStorage
+  localStorage.setItem("quantity", quantity);
+}
+
+
+
 //button event to clear the cart
 document.getElementById("clear").addEventListener("click", function () {
   //removing items from the localStorage
-  localStorage.removeItem("sum", sum);
-  localStorage.removeItem("cart", "[]");
+  localStorage.removeItem("sum");
+  localStorage.removeItem("cart");
+  localStorage.removeItem('quantity');
   //reloading the window so the cart is usable again if the user wishes
   window.location.reload();
 });
+
+document.getElementById("purchase").addEventListener("click", function () {
+  //removing items from the localStorage
+  localStorage.removeItem("sum");
+  localStorage.removeItem("cart");
+  localStorage.removeItem('quantity');
+  //reloading the window so the cart is usable again if the user wishes
+  window.location.reload();
+  //and finally, redirecting the user to the cartSubmit page
+  window.location.href = 'cartSubmit.html'
+});
+
+

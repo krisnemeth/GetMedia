@@ -45,6 +45,7 @@ function updateQuantity(productId, quantity) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  
 }
 
 function getTotal() {
@@ -59,6 +60,16 @@ function getTotal() {
   localStorage.setItem("sum", sum);
 }
 
+function getQuantity(){
+  let temp = cart.map(function (item) {
+    return parseInt(item.quantity);
+  });
+  let quantity = temp.reduce(function (prev, next) {
+    return prev + next;
+  }, 0);
+  localStorage.setItem("quantity", quantity)
+}
+
 // button event handlers
 
 document.getElementById("btn1").addEventListener("click", function () {
@@ -70,6 +81,7 @@ document.getElementById("btn1").addEventListener("click", function () {
   updateQuantity(1, quantity);
   //calculating, and storing the current value in localStorage
   getTotal();
+  getQuantity();
 });
 
 document.getElementById("btn2").addEventListener("click", function () {
@@ -77,6 +89,7 @@ document.getElementById("btn2").addEventListener("click", function () {
   addItem(2);
   updateQuantity(2, quantity);
   getTotal();
+  getQuantity();
 });
 
 document.getElementById("btn3").addEventListener("click", function () {
@@ -84,4 +97,5 @@ document.getElementById("btn3").addEventListener("click", function () {
   addItem(3);
   updateQuantity(3, quantity);
   getTotal();
+  getQuantity();
 });
