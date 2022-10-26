@@ -8,32 +8,29 @@
     <title>GetMedia</title>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
-
+    <!-- scripts -->
     <script src="./controllers/itunesController.js"></script>
-
+    <script defer src="./controllers/footerNavController.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-    
     <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/footer.css">
-
-
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 
 <body ng-controller="iTunesController">
     <aside class="sidebar d-none d-lg-block">
         <div class="container-fluid pt-2">
             <a class="navbar-brand text-white" href="./home.html">
-                <h2>GetMedia<img src="../img/GMlogo1.png" alt="Logo"
-                        class="logo d-inline-block align-text-top"></h2>
+                <h2>GetMedia<img src="../img/GMlogo1.png" alt="Logo" class="logo d-inline-block align-text-top"></h2>
             </a>
         </div>
         <nav>
@@ -130,9 +127,6 @@
                 <i class="bi bi-cart-fill" id="cartBtn" style="font-size: 200%;"></i>
             </div>
     </footer>
-
-
-    <script src="./controllers/footerNavController.js"></script>
 </body>
 
 </html>
