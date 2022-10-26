@@ -1,6 +1,7 @@
 .card {
     height: 15rem;
     max-height: 15rem;
+    
     background: radial-gradient(circle, rgba(108, 117, 125, 1) 0%, rgba(61, 61, 60, 1) 100%);
     border: none;
     /* box-shadow: 0 0 5px #FFC108,
