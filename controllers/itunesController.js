@@ -1,6 +1,6 @@
-var iTunesController = function ($scope, $https) {
+var iTunesController = function ($scope, $http) {
   $scope.searchiTunes = function (artist) {
-    $https
+    $http
       .jsonp("https://itunes.apple.com/search", {
         params: {
           callback: "JSON_CALLBACK",
